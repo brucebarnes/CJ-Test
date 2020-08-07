@@ -65,11 +65,11 @@ public class MovementController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
-
+            MoveLeftLeg();
         }
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-
+            MoveRightLeg();
         }
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -121,6 +121,18 @@ public class MovementController : MonoBehaviour
     {
         upperArmRight.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Lerp(upperArmRight.GetComponent<ConfigurableJoint>().targetRotation, startUpperRightArmRotation, limbMovementSpeed );
         upperArmLeft.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Lerp(upperArmLeft.GetComponent<ConfigurableJoint>().targetRotation, startUpperLeftArmRotation, limbMovementSpeed );  
+    }
+
+    void MoveLeftLeg()
+    {
+        upperLegLeft.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Lerp(upperLegLeft.GetComponent<ConfigurableJoint>().targetRotation, new Quaternion(.5f,0,0,1),6);
+        lowerLegLeft.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Lerp(lowerLegLeft.GetComponent<ConfigurableJoint>().targetRotation, new Quaternion(1,0,0,1),10);
+    }
+
+    void MoveRightLeg()
+    {
+        upperLegRight.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Lerp(upperLegRight.GetComponent<ConfigurableJoint>().targetRotation, new Quaternion(.5f,0,0,1), 6);
+        lowerLegRight.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Lerp(lowerLegRight.GetComponent<ConfigurableJoint>().targetRotation, new Quaternion(1,0,0,1), 10);
     }
 
 }
